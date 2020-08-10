@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.tedu.store.mapper.DistrictMapper">
+
+    <!-- 根据省代号获取省市或市代号获取区代号 -->
+    <!-- List<District> findByParent(String parent) -->
+    <select id="findByParent"
+            resultType="cn.tedu.store.entity.District">
+        SELECT
+            *
+        FROM
+            t_dict_district
+        WHERE
+            parent=#{parent}
+        ORDER BY
+            code ASC
+    </select>
+
+    <!-- 根据代号获取其名字 -->
+    <!-- String findNameByCode(String code) -->
+    <select id="findNameByCode" resultType="java.lang.String">
+        SELECT
+            name
+        FROM
+            t_dict_district
+        WHERE
+            code=#{code}
+    </select>
+
+
+</mapper>
